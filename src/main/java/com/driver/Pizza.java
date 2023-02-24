@@ -7,10 +7,10 @@ public class Pizza {
     private String bill;
     private int toppings;
 
-    boolean isExtraCheeseAdded;
-    boolean isExtraToppingAdded;
-    boolean isTakeAway;
-    boolean isBillCreated;
+    private boolean isExtraCheeseAdded;
+    private boolean isExtraToppingAdded;
+    private boolean isTakeAway;
+    private boolean isBillCreated;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
@@ -18,10 +18,12 @@ public class Pizza {
         if(isVeg){
             this.price = 300;
             this.toppings = 70;
+            this.bill = "Base Price Of The Pizza: "+this.price+ "\n";
         }
         else{
             this.price = 400;
             this.toppings = 120;
+            this.bill = "Base Price Of The Pizza: "+this.price+ "\n";
         }
 
         /*this.isExtraCheeseAdded = false;
@@ -29,8 +31,6 @@ public class Pizza {
         this.isTakeAway = false;
         this.isBillCreated = false;
         */
-
-        this.bill = "Base Price Of The Pizza: "+this.price+"\n";
     }
 
     public int getPrice(){
@@ -49,7 +49,7 @@ public class Pizza {
         // your code goes here
         if(!isExtraToppingAdded){
             this.price += this.toppings;
-            isExtraToppingAdded = true;
+            this.isExtraToppingAdded = true;
         }
     }
 
@@ -57,7 +57,7 @@ public class Pizza {
         // your code goes here
         if(!isTakeAway){
             this.price += 20;
-            isTakeAway = true;
+            this.isTakeAway = true;
         }
     }
 
@@ -65,18 +65,17 @@ public class Pizza {
         // your code goes here
         if(!isBillCreated){
             if(isExtraCheeseAdded){
-                this.bill += "Extra Cheese Added: 80"+"\n";
+                this.bill += "Extra Cheese Added: 80"+ "\n";
             }
             if(isExtraToppingAdded){
-                this.bill += "Extra Toppings Added: "+this.toppings+"\n";
+                this.bill += "Extra Toppings Added: "+this.toppings+ "\n";
             }
             if(isTakeAway){
-                this.bill += "Paperbag Added: 20"+"\n";
+                this.bill += "Paperbag Added: 20"+ "\n";
             }
-            this.bill += "Total Price: "+this.price;
-            this.isBillCreated = true;
-            return this.bill;
+            this.bill += "Total Price: "+this.price+ "\n";
         }
-        return "";
+        this.isBillCreated = true;
+        return this.bill;
     }
 }
